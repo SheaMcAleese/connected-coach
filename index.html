@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Connected Coach · ELV8 Performance</title>
+<meta name="description" content="Six weeks, hands on, for high-performance coaches. Most coaches use about five percent of what AI can do. Build the other ninety five into how you actually coach.">
+<meta name="theme-color" content="#222222">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Connected Coach · ELV8 Performance">
+<meta property="og:description" content="Most coaches use about five percent of what AI can do. Six weeks to build the other ninety five into how you actually coach.">
+<meta property="og:site_name" content="ELV8 Performance">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+/* .btn sets display:inline-block, which would otherwise beat the hidden
+   attribute and leave a dead "Take my seat" button on the page. */
+[hidden]{display:none !important}
+
+:root{
+  --black:#222222;
+  --gold:#D4AF37;
+  --white:#FFFFFF;
+  --ivory:#F7F5EF;
+  --charcoal:#3A3A3A;
+  --grey:#8A8A8A;
+  --grey-light:#D9D9D9;
+
+  --font-head:'Playfair Display',Georgia,serif;
+  --font-sans:'Montserrat','Helvetica Neue',Arial,sans-serif;
+
+  --h1:700 clamp(40px,6vw,80px)/1.12 var(--font-head);
+  --h2:700 clamp(30px,4vw,51px)/1.15 var(--font-head);
+  --h3:700 clamp(22px,2.4vw,30px)/1.2 var(--font-head);
+  --body:400 18px/1.6 var(--font-sans);
+  --caption:500 13px/1.4 var(--font-sans);
+
+  --pad-card:40px;
+  --radius:0px;
+  --maxw:1080px;
+  --narrow:760px;
+}
+
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  font:var(--body);
+  color:var(--charcoal);
+  background:var(--ivory);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* ---------------------------------------------------------------- a11y */
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.dark :focus-visible{outline-color:var(--gold)}
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:100;
+  background:var(--gold);color:var(--black);padding:14px 22px;
+  font:600 12px/1 var(--font-sans);letter-spacing:.12em;text-transform:uppercase;
+}
+.skip:focus{left:12px;top:12px}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+    scroll-behavior:auto !important;
+  }
+}
+
+/* --------------------------------------------------------------- layout */
+.wrap{
+  width:100%;max-width:var(--maxw);margin:0 auto;
+  padding-left:max(28px, env(safe-area-inset-left));
+  padding-right:max(28px, env(safe-area-inset-right));
+}
+.narrow{max-width:var(--narrow);margin-left:auto;margin-right:auto}
+section{padding:clamp(72px,10vw,132px) 0}
+.dark{background:var(--black);color:var(--white)}
+.dark p{color:rgba(255,255,255,.78)}
+
+.eyebrow{
+  font:600 11px/1.6 var(--font-sans);
+  letter-spacing:.22em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:22px;
+}
+h1{font:var(--h1);letter-spacing:-.01em}
+h2{font:var(--h2);letter-spacing:-.01em;color:var(--black)}
+.dark h2{color:var(--white)}
+h3{font:var(--h3);letter-spacing:-.01em;color:var(--black)}
+.dark h3{color:var(--white)}
+em{font-style:italic;color:var(--gold)}
+h2 + p, h3 + p{margin-top:20px}
+p + p{margin-top:18px}
+.lede{font-size:clamp(19px,2vw,22px);line-height:1.55}
+.muted{color:var(--grey)}
+.rule{width:48px;height:2px;background:var(--gold);border:0;margin:34px 0}
+.rule.centre{margin-left:auto;margin-right:auto}
+
+/* --------------------------------------------------------------- buttons */
+.btn{
+  display:inline-block;
+  font:600 12px/1 var(--font-sans);
+  letter-spacing:.12em;text-transform:uppercase;
+  padding:19px 44px;border-radius:var(--radius);
+  border:1px solid transparent;cursor:pointer;
+  text-decoration:none;transition:background .2s ease,color .2s ease,border-color .2s ease;
+}
+.btn-primary{background:var(--gold);color:var(--black);border-color:var(--gold)}
+.btn-primary:hover{background:#c19d2c;border-color:#c19d2c}
+.btn-ghost{background:transparent;color:var(--white);border-color:rgba(255,255,255,.32)}
+.btn-ghost:hover{border-color:var(--white)}
+.btn-ghost-dark{background:transparent;color:var(--black);border-color:rgba(34,34,34,.32)}
+.btn-ghost-dark:hover{border-color:var(--black)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
+
+/* ----------------------------------------------------------------- hero */
+.hero{
+  min-height:100dvh;display:flex;flex-direction:column;justify-content:center;
+  background:var(--black);color:var(--white);padding:96px 0 72px;
+}
+.hero h1{color:var(--white);max-width:15ch}
+.hero .sub{
+  font:italic 700 clamp(20px,2.4vw,27px)/1.35 var(--font-head);
+  color:rgba(255,255,255,.62);margin-top:24px;max-width:26ch;
+}
+.hero .sub em{color:rgba(255,255,255,.62)}
+.hero .body{max-width:52ch;color:rgba(255,255,255,.78)}
+.hero-meta{
+  margin-top:52px;padding-top:26px;border-top:1px solid rgba(255,255,255,.14);
+  display:flex;flex-wrap:wrap;gap:34px;
+}
+.hero-meta div{min-width:120px}
+.hero-meta dt{font:600 10px/1.6 var(--font-sans);letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.44)}
+.hero-meta dd{font:600 16px/1.4 var(--font-sans);color:var(--white);margin-top:6px}
+
+/* ------------------------------------------------------------ the hook */
+.hook{background:var(--ivory)}
+.stat{
+  font:700 clamp(72px,13vw,168px)/.9 var(--font-head);
+  color:var(--black);letter-spacing:-.03em;
+}
+.stat span{font-size:.42em;vertical-align:super;letter-spacing:0}
+
+/* ----------------------------------------------------------------- grid */
+.grid{display:grid;gap:1px;background:var(--grey-light);margin-top:56px}
+@media(min-width:760px){.grid.two{grid-template-columns:1fr 1fr}}
+.grid > div{background:var(--ivory);padding:var(--pad-card)}
+.dark .grid{background:rgba(255,255,255,.14)}
+.dark .grid > div{background:var(--black)}
+
+.card-title{font:600 15px/1.3 var(--font-sans);letter-spacing:.08em;text-transform:uppercase;color:var(--black);margin-bottom:14px}
+.dark .card-title{color:var(--white)}
+.card p{font-size:16px}
+
+/* --------------------------------------------------------------- checks */
+.checks{list-style:none;margin-top:34px}
+.checks li{
+  position:relative;padding:0 0 0 34px;margin-bottom:17px;
+  font-size:17px;line-height:1.55;
+}
+.checks li::before{
+  content:"";position:absolute;left:0;top:11px;
+  width:16px;height:1px;background:var(--gold);
+}
+.dark .checks li{color:rgba(255,255,255,.82)}
+
+/* ----------------------------------------------------------------- arc */
+.arc{list-style:none;counter-reset:wk;margin-top:56px;border-top:1px solid var(--grey-light)}
+.dark .arc{border-color:rgba(255,255,255,.16)}
+.arc li{
+  counter-increment:wk;
+  border-bottom:1px solid var(--grey-light);
+  padding:30px 0;display:grid;gap:6px 30px;
+}
+.dark .arc li{border-color:rgba(255,255,255,.16)}
+@media(min-width:700px){
+  .arc li{grid-template-columns:88px 1fr}
+  .arc .wk-body{grid-column:2}
+}
+.arc .wk-num{
+  font:600 12px/1.6 var(--font-sans);letter-spacing:.2em;
+  color:var(--gold);
+}
+.arc .wk-num::before{content:"0" counter(wk)}
+.arc h3{font:600 18px/1.35 var(--font-sans);letter-spacing:.02em;color:var(--black)}
+.dark .arc h3{color:var(--white)}
+.arc p{margin-top:8px;font-size:16px;color:var(--grey)}
+.dark .arc p{color:rgba(255,255,255,.6)}
+
+/* ---------------------------------------------------------------- price */
+.price-card{
+  background:var(--black);color:var(--white);
+  padding:clamp(36px,6vw,72px);margin-top:56px;
+}
+/* Playfair defaults to old-style figures, which renders 700 as "7oo". */
+.price-fig{font:700 clamp(46px,7vw,84px)/1 var(--font-head);color:var(--white);letter-spacing:-.02em;font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1}
+.stat,.hero-meta dd{font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1}
+.price-sub{font:500 14px/1.5 var(--font-sans);color:rgba(255,255,255,.55);margin-top:16px}
+.guarantee{
+  margin-top:40px;padding-top:32px;border-top:1px solid rgba(255,255,255,.16);
+}
+.guarantee q{
+  font:italic 700 clamp(19px,2.2vw,25px)/1.45 var(--font-head);
+  color:var(--white);quotes:none;display:block;max-width:34ch;
+}
+
+/* ------------------------------------------------------------ objections */
+.obj{border-top:1px solid var(--grey-light);margin-top:48px}
+.obj details{border-bottom:1px solid var(--grey-light)}
+.obj summary{
+  cursor:pointer;list-style:none;padding:26px 40px 26px 0;position:relative;
+  font:600 17px/1.4 var(--font-sans);color:var(--black);
+}
+.obj summary::-webkit-details-marker{display:none}
+.obj summary::after{
+  content:"";position:absolute;right:6px;top:34px;
+  width:11px;height:11px;border-right:1px solid var(--charcoal);border-bottom:1px solid var(--charcoal);
+  transform:rotate(45deg);transition:transform .2s ease;
+}
+.obj details[open] summary::after{transform:rotate(-135deg);top:38px}
+.obj .ans{padding:0 0 28px;max-width:62ch;color:var(--charcoal)}
+
+/* ----------------------------------------------------------------- form */
+.form-card{background:var(--white);padding:clamp(30px,5vw,56px);margin-top:52px;border:1px solid var(--grey-light)}
+.field{margin-bottom:24px}
+.field label{
+  display:block;font:600 11px/1.6 var(--font-sans);
+  letter-spacing:.16em;text-transform:uppercase;color:var(--charcoal);margin-bottom:9px;
+}
+.field .hint{font:var(--caption);color:var(--grey);text-transform:none;letter-spacing:0;margin-top:5px;display:block}
+.field input,.field textarea,.field select{
+  width:100%;font:400 16px/1.5 var(--font-sans);color:var(--black);
+  background:var(--ivory);border:1px solid var(--grey-light);border-radius:var(--radius);
+  padding:15px 16px;transition:border-color .18s ease;
+}
+.field input:hover,.field textarea:hover,.field select:hover{border-color:var(--grey)}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--black);outline-offset:2px}
+.field textarea{min-height:104px;resize:vertical}
+.field.err input,.field.err textarea,.field.err select{border-color:#B3261E}
+.field .msg{font:var(--caption);color:#B3261E;margin-top:7px;display:none}
+.field.err .msg{display:block}
+
+.form-status{margin-top:20px;font:500 15px/1.5 var(--font-sans);min-height:24px}
+.form-status[data-tone="err"]{color:#B3261E}
+.form-status[data-tone="ok"]{color:var(--charcoal)}
+
+.done{display:none;text-align:center;padding:24px 0}
+.done h3{margin-bottom:16px}
+.spinner{
+  display:inline-block;width:13px;height:13px;margin-right:9px;vertical-align:-1px;
+  border:2px solid rgba(34,34,34,.25);border-top-color:var(--black);border-radius:50%;
+  animation:spin .7s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* --------------------------------------------------------------- footer */
+footer{background:var(--black);color:rgba(255,255,255,.5);padding:64px 0 72px;font:var(--caption)}
+footer .mark{font:700 19px/1 var(--font-head);color:var(--white);letter-spacing:.03em}
+footer p{margin-top:14px;max-width:56ch;color:rgba(255,255,255,.5)}
+footer a{color:rgba(255,255,255,.72)}
+
+/* ---------------------------------------------------------------- print */
+@media print{
+  :root{--maxw:100%}
+  html,body{background:var(--white);color:#000;font-size:11pt}
+  .hero{min-height:auto;padding:0 0 24pt}
+  .hero,.dark,.price-card,footer{background:var(--white) !important;color:#000 !important}
+  .dark h2,.dark h3,.dark p,.hero h1,.hero .body,.price-fig,footer .mark{color:#000 !important}
+  .dark p,.hero .body,.price-sub,footer p{color:#333 !important}
+  section{padding:18pt 0;break-inside:avoid}
+  .btn-row,.form-card,.skip,#applyForm{display:none !important}
+  .obj details{break-inside:avoid}
+  .obj .ans{display:block !important}
+  a[href^="http"]::after{content:" (" attr(href) ")";font-size:8pt;color:#666}
+  -webkit-print-color-adjust:exact;print-color-adjust:exact;
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#apply">Skip to the application</a>
+
+<!-- ============================================================== HERO -->
+<header class="hero dark">
+  <div class="wrap">
+    <p class="eyebrow">ELV8 Performance &middot; Founding cohort</p>
+    <h1>Most coaches use about five percent of what AI can do. <em>The chat box.</em></h1>
+    <p class="sub">Six weeks to build the other ninety five into how you actually coach.</p>
+    <hr class="rule">
+    <p class="body">Not a course you watch. A small group of high-performance coaches, working on their own real coaching, until the system runs itself. No jargon. No code. Ever.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="#apply">Apply for a seat</a>
+      <a class="btn btn-ghost" href="#arc">See the six weeks</a>
+    </div>
+    <dl class="hero-meta">
+      <div><dt>Format</dt><dd>Six weeks, live</dd></div>
+      <div><dt>Cohort</dt><dd data-cfg="seats">Six coaches</dd></div>
+      <div><dt>Seat</dt><dd data-cfg="price">On application</dd></div>
+      <div><dt>Starts</dt><dd data-cfg="dates">To be set</dd></div>
+    </dl>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============================================================== HOOK -->
+<section class="hook">
+  <div class="wrap narrow">
+    <p class="eyebrow">The gap</p>
+    <p class="stat">5<span>%</span></p>
+    <h2 style="margin-top:26px">You already know AI matters. <em>You are still typing into a box.</em></h2>
+    <p class="lede" style="margin-top:26px">That is not a failing. It is where almost every coach is, because nobody has shown you the rest of it applied to <strong>coaching</strong> rather than to marketing or to code.</p>
+    <p>Meanwhile the admin keeps eating the week. Session plans. Athlete feedback. Reports nobody reads. Periodisation in a spreadsheet you fight with. The parts of the job you actually got into coaching for keep getting squeezed by the parts you did not.</p>
+    <p>Six weeks from now, that work still happens. It just stops being yours to grind through.</p>
+  </div>
+</section>
+
+<!-- ============================================================== WHO -->
+<section class="dark">
+  <div class="wrap">
+    <div class="narrow">
+      <p class="eyebrow">Who this is for</p>
+      <h2>One coach. <em>On purpose.</em></h2>
+      <p class="lede" style="margin-top:24px">This is built for one buyer, which means it will not suit everyone. Read both columns honestly.</p>
+    </div>
+    <div class="grid two">
+      <div class="card">
+        <p class="card-title">This is you</p>
+        <p>High-performance or ambitious development coaches. Time poor and buried in admin. You open ChatGPT now and then for a quick question, and that is the whole of it. You know AI matters, you feel a step behind, and you have no idea where to start. You have paid for a mentor or a course in the last year, because you invest in yourself.</p>
+      </div>
+      <div class="card">
+        <p class="card-title">This is not you</p>
+        <p>You want theory, a certificate, or a recording to watch later. You want someone to hand you finished prompts you never adapt. You are looking for the cheapest option. You want AI to do the coaching for you. If any of that is the appeal, this will disappoint you and I would rather say so now.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ PROMISE -->
+<section>
+  <div class="wrap narrow">
+    <p class="eyebrow">The promise</p>
+    <h2>What you can <em>do</em> at the end. Not what you will know.</h2>
+    <ul class="checks">
+      <li>Turn rough notes into a structured session plan in minutes.</li>
+      <li>Generate personalised athlete feedback that sounds like you, not like a robot.</li>
+      <li>Build a season and periodisation overview in a spreadsheet, without being a spreadsheet person.</li>
+      <li>Turn a training or a game into a clean report or deck.</li>
+      <li>Interrogate your own coaching notes and documents, and get straight answers back.</li>
+      <li>Prompt properly across the tools that matter, using one frame that holds up.</li>
+      <li>Walk away with your own working setup. Not a folder of theory.</li>
+    </ul>
+    <p style="margin-top:38px" class="muted">The test of every session is the same: you leave able to do something new with your real work.</p>
+  </div>
+</section>
+
+<!-- ================================================================ ARC -->
+<section id="arc" class="dark">
+  <div class="wrap">
+    <div class="narrow">
+      <p class="eyebrow">The six weeks</p>
+      <h2>One live session a week. <em>One real task between them.</em></h2>
+      <p class="lede" style="margin-top:24px">Sixty to seventy five minutes, hands on, working on your coaching rather than on slides. Every week is applied to live work only, never to practice mode.</p>
+    </div>
+    <ol class="arc">
+      <li><span class="wk-num" aria-hidden="true"></span><div class="wk-body">
+        <h3><span class="sr">Week one. </span>Setup, and how to actually talk to AI</h3>
+        <p>The frame that makes the difference between a vague answer and a usable one. First win on a real task you bring to the room.</p>
+      </div></li>
+      <li><span class="wk-num" aria-hidden="true"></span><div class="wk-body">
+        <h3><span class="sr">Week two. </span>Session planning and periodisation</h3>
+        <p>Build plans fast. Get the season on one page. Spreadsheets, without becoming a spreadsheet person.</p>
+      </div></li>
+      <li><span class="wk-num" aria-hidden="true"></span><div class="wk-body">
+        <h3><span class="sr">Week three. </span>Athlete feedback and comms, in your voice</h3>
+        <p>A feedback engine tuned to how you speak, so what goes out still sounds like it came from you.</p>
+      </div></li>
+      <li><span class="wk-num" aria-hidden="true"></span><div class="wk-body">
+        <h3><span class="sr">Week four. </span>Your second brain</h3>
+        <p>Get your own coaching knowledge organised and searchable, then ask it hard questions and get real answers.</p>
+      </div></li>
+      <li><span class="wk-num" aria-hidden="true"></span><div class="wk-body">
+        <h3><span class="sr">Week five. </span>Reports, decks and analysis</h3>
+        <p>Turn a training block or a game into something professional enough to put in front of a board or a parent.</p>
+      </div></li>
+      <li><span class="wk-num" aria-hidden="true"></span><div class="wk-body">
+        <h3><span class="sr">Week six. </span>Make it stick</h3>
+        <p>Your personal setup, and the habits that keep it running when the season gets loud. What comes next.</p>
+      </div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- =============================================================== ACA -->
+<section>
+  <div class="wrap narrow">
+    <p class="eyebrow">How it runs</p>
+    <h2>The same framework I coach with. <em>Pointed at you.</em></h2>
+    <div class="grid two" style="margin-top:44px">
+      <div class="card">
+        <p class="card-title">Accountability</p>
+        <p>A task every week, checked in the next session. Nobody drifts quietly.</p>
+      </div>
+      <div class="card">
+        <p class="card-title">Consistency</p>
+        <p>Small reps on real work, week after week, instead of one big burst that fades.</p>
+      </div>
+      <div class="card">
+        <p class="card-title">Action</p>
+        <p>Applied to live coaching only. If it is not in your actual week, we do not build it.</p>
+      </div>
+      <div class="card">
+        <p class="card-title">What you keep</p>
+        <p>Your own working setup, a template and prompt pack, the starter card, and a recording of every session.</p>
+      </div>
+    </div>
+    <p style="margin-top:40px" class="muted">Cohort of <span data-cfg="seats-n">six</span>, so there is peer energy in the room and still time for your specifics. Questions between sessions get answered, not queued.</p>
+  </div>
+</section>
+
+<!-- ============================================================== WHY ME -->
+<section class="dark">
+  <div class="wrap narrow">
+    <p class="eyebrow">Why me</p>
+    <h2>Not a tech guy teaching coaches. <em>A coach who built the thing.</em></h2>
+    <p class="lede" style="margin-top:24px">320 caps for the Black Sticks. Now coaching in a national programme, where the admin load is real and the standard is not negotiable.</p>
+    <p>I built an AI system into that work because I needed it, not because it was interesting. Athlete records, feedback that goes out in my voice, opposition prep, match data turned into a clear read. It runs every week, on real athletes, with real consequences if it is wrong.</p>
+    <p>I am not going to stand here as the oracle. I am a peer who is roughly two years ahead of where you are, showing you what actually worked and what wasted my time. That is more useful than a guru, and it is more honest.</p>
+  </div>
+</section>
+
+<!-- ============================================================== PRICE -->
+<section>
+  <div class="wrap narrow">
+    <p class="eyebrow">The founding round</p>
+    <h2>Reduced, in exchange for <em>honest feedback.</em></h2>
+    <p class="lede" style="margin-top:24px">This is the first time this runs. You get a lower rate and my full attention on a small group. I get to learn exactly where coaches get stuck. That trade is the whole deal, and it only happens once.</p>
+
+    <div class="price-card">
+      <p class="eyebrow" style="color:rgba(255,255,255,.5)">Founding seat</p>
+      <p class="price-fig" data-cfg="price-fig">On application</p>
+      <p class="price-sub" data-cfg="price-note"></p>
+      <div class="guarantee">
+        <p class="eyebrow" style="color:rgba(255,255,255,.5)">The guarantee</p>
+        <q>If after the first two sessions you do not have at least one workflow saving you real time, I refund you in full.</q>
+        <p class="price-sub">No forms, no conversation you have to talk your way through. You say the word and it is done.</p>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <a class="btn btn-primary" href="#apply">Apply for a seat</a>
+      <a class="btn btn-ghost-dark" id="buyBtn" href="#" hidden>Take my seat now</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================== OBJECTIONS -->
+<section class="hook">
+  <div class="wrap narrow">
+    <p class="eyebrow">Before you ask</p>
+    <h2>The four things <em>everybody says.</em></h2>
+    <div class="obj">
+      <details>
+        <summary>I am not techy.</summary>
+        <div class="ans"><p>That is exactly who this is for. We build it together in the session. You talk, it types. There is no code in this anywhere, and there never will be. If you can write a text message you have the technical skill required.</p></div>
+      </details>
+      <details>
+        <summary>I do not have time.</summary>
+        <div class="ans"><p>This gives time back. The first session usually saves more hours than the whole six weeks costs. If it does not, the guarantee is right there. The commitment is seventy five minutes a week plus one task applied to work you were already going to do.</p></div>
+      </details>
+      <details>
+        <summary>AI feels impersonal. That is not coaching.</summary>
+        <div class="ans"><p>Agreed, and that is why the feedback week exists. It drafts, you stay the coach. Done properly it sharpens your voice and your judgment rather than replacing them. Done badly it sounds like a robot, which is precisely the failure we spend a week designing out.</p></div>
+      </details>
+      <details>
+        <summary>I could learn this free on YouTube.</summary>
+        <div class="ans"><p>You could. You have not. That is not a dig, it is the point. This is done with you, tailored to your coaching, with someone checking the work each week. That is the difference between watching and doing, and it is the only thing you are actually paying for.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================== APPLY -->
+<section id="apply" class="dark">
+  <div class="wrap narrow">
+    <p class="eyebrow">Apply</p>
+    <h2>Tell me where you are <em>actually stuck.</em></h2>
+    <p class="lede" style="margin-top:24px">Applications rather than a buy button, because I am picking <span data-cfg="seats-n">six</span> coaches this round and the mix in the room matters. Two minutes. I reply to every one, either way.</p>
+
+    <div class="form-card">
+      <form id="applyForm" novalidate>
+        <div class="field" id="f-name">
+          <label for="name">Your name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required>
+          <span class="msg" id="m-name">Put your name in so I know who I am replying to.</span>
+        </div>
+
+        <div class="field" id="f-email">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required>
+          <span class="msg" id="m-email">That email does not look right. Check it and go again.</span>
+        </div>
+
+        <div class="field" id="f-role">
+          <label for="role">Your coaching role</label>
+          <input id="role" name="role" type="text" placeholder="Head coach, assistant, academy lead" required>
+          <span class="msg" id="m-role">A word or two is plenty.</span>
+        </div>
+
+        <div class="field" id="f-sport">
+          <label for="sport">Sport and level</label>
+          <input id="sport" name="sport" type="text" placeholder="Hockey, national age group">
+          <span class="hint">Optional, but it helps me balance the room.</span>
+        </div>
+
+        <div class="field" id="f-stuck">
+          <label for="stuck">What eats the most time in your week</label>
+          <textarea id="stuck" name="stuck" required></textarea>
+          <span class="hint">Be specific. This is the bit I actually read.</span>
+          <span class="msg" id="m-stuck">Give me a sentence on this one. It is the whole basis of the reply.</span>
+        </div>
+
+        <div class="field" id="f-tried">
+          <label for="tried">What you have tried with AI so far</label>
+          <textarea id="tried" name="tried" placeholder="Honest answer is fine. Nothing at all is a fine answer."></textarea>
+          <span class="hint">Optional.</span>
+        </div>
+
+        <button class="btn btn-primary" type="submit" id="submitBtn">Send my application</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="done" id="applyDone">
+        <h3>That is in.</h3>
+        <p>I read these myself and I reply to every one, usually within a couple of days. If you are a fit I will send you the dates and the detail. If you are not, I will tell you that straight and point you at something better.</p>
+      </div>
+    </div>
+
+    <p style="margin-top:32px;font-size:14px;color:rgba(255,255,255,.45)">Your details go to me and to my email list. Nowhere else, and no sharing with anyone. Unsubscribe whenever you want.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap narrow">
+    <p class="mark">ELV8 Performance</p>
+    <p>High performance isn't an accident.</p>
+    <p style="margin-top:22px">Questions before you apply, mail <a href="mailto:sheamcaleese@gmail.com" id="footMail">sheamcaleese@gmail.com</a>.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" crossorigin="anonymous"></script>
+<script src="config.js"></script>
+<script>
+(function(){
+  'use strict';
+  var C = (typeof CONFIG !== 'undefined') ? CONFIG : {};
+
+  // ------------------------------------------------------------- config in
+  // Everything the page claims about price, seats and dates is written once
+  // in config.js and stamped in here, so the two can never drift apart.
+  var WORDS = ['zero','one','two','three','four','five','six','seven','eight','nine','ten'];
+  function seatWord(n){ return (n >= 0 && n < WORDS.length) ? WORDS[n] : String(n); }
+
+  function setAll(key, value){
+    var nodes = document.querySelectorAll('[data-cfg="' + key + '"]');
+    for (var i = 0; i < nodes.length; i++) nodes[i].textContent = value;
+  }
+
+  var seats = Number(C.SEATS) > 0 ? Number(C.SEATS) : 6;
+  setAll('seats', seatWord(seats).replace(/^./, function(c){ return c.toUpperCase(); }) + ' coaches');
+  setAll('seats-n', seatWord(seats));
+
+  if (C.PRICE) { setAll('price', C.PRICE); setAll('price-fig', C.PRICE); }
+  if (C.PRICE_NOTE) setAll('price-note', C.PRICE_NOTE);
+  if (C.DATES) setAll('dates', C.DATES);
+
+  // A Stripe link is optional and off by default. The moment one exists in
+  // config, the direct-purchase button appears beside the application.
+  var buy = document.getElementById('buyBtn');
+  if (C.PAYMENT_LINK) {
+    buy.href = C.PAYMENT_LINK;
+    buy.rel = 'noopener';
+    buy.hidden = false;
+  }
+
+  if (C.NOTIFY_EMAIL) {
+    var fm = document.getElementById('footMail');
+    fm.href = 'mailto:' + C.NOTIFY_EMAIL;
+    fm.textContent = C.NOTIFY_EMAIL;
+  }
+
+  // ------------------------------------------------------------ validation
+  var form   = document.getElementById('applyForm');
+  var status = document.getElementById('formStatus');
+  var btn    = document.getElementById('submitBtn');
+  var done   = document.getElementById('applyDone');
+
+  function fieldEl(id){ return document.getElementById('f-' + id); }
+
+  function mark(id, bad){
+    var f = fieldEl(id);
+    if (!f) return;
+    f.classList.toggle('err', !!bad);
+    var input = document.getElementById(id);
+    if (input) input.setAttribute('aria-invalid', bad ? 'true' : 'false');
+  }
+
+  function val(id){
+    var el = document.getElementById(id);
+    return el ? el.value.trim() : '';
+  }
+
+  function validate(){
+    var bad = [];
+    if (!val('name'))  { mark('name', true);  bad.push('name'); }  else mark('name', false);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val('email'))) { mark('email', true); bad.push('email'); } else mark('email', false);
+    if (!val('role'))  { mark('role', true);  bad.push('role'); }  else mark('role', false);
+    if (!val('stuck')) { mark('stuck', true); bad.push('stuck'); } else mark('stuck', false);
+    return bad;
+  }
+
+  function setStatus(text, tone){
+    status.textContent = text;
+    if (tone) status.setAttribute('data-tone', tone); else status.removeAttribute('data-tone');
+  }
+
+  function busy(on){
+    btn.disabled = on;
+    btn.textContent = on ? 'Sending' : 'Send my application';
+    if (on) {
+      var s = document.createElement('span');
+      s.className = 'spinner';
+      btn.insertBefore(s, btn.firstChild);
+    }
+  }
+
+  // ------------------------------------------------------------- delivery
+  // Kit builds the list. EmailJS delivers the application itself. Neither is
+  // allowed to block the other, and if EmailJS is not wired up yet the mail
+  // client takes over, so the form is never a dead end.
+  function subscribeToKit(payload){
+    if (!C.KIT_FORM_ID || !C.KIT_API_KEY) return Promise.resolve();
+    return fetch('https://api.convertkit.com/v3/forms/' + C.KIT_FORM_ID + '/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
+      body: JSON.stringify({
+        api_key: C.KIT_API_KEY,
+        email: payload.from_email,
+        first_name: payload.from_name,
+        fields: {
+          cc_role: payload.role,
+          cc_sport: payload.sport,
+          cc_stuck: payload.stuck,
+          cc_source: 'connected-coach-application'
+        }
+      })
+    });
+  }
+
+  function sendViaEmailJS(payload){
+    if (!C.EMAILJS_PUBLIC_KEY || !C.EMAILJS_SERVICE_ID || !C.EMAILJS_TEMPLATE_ID) {
+      return Promise.reject(new Error('not-configured'));
+    }
+    if (typeof emailjs === 'undefined') {
+      return Promise.reject(new Error('emailjs-unavailable'));
+    }
+    return emailjs.send(C.EMAILJS_SERVICE_ID, C.EMAILJS_TEMPLATE_ID, payload, {
+      publicKey: C.EMAILJS_PUBLIC_KEY
+    });
+  }
+
+  function mailtoFallback(payload){
+    if (!C.FALLBACK_MAILTO || !C.NOTIFY_EMAIL) return false;
+    var body = [
+      'Name: ' + payload.from_name,
+      'Email: ' + payload.from_email,
+      'Role: ' + payload.role,
+      'Sport and level: ' + (payload.sport || 'not given'),
+      '',
+      'What eats the most time:',
+      payload.stuck,
+      '',
+      'Tried so far:',
+      (payload.tried || 'not given')
+    ].join('\n');
+    window.location.href = 'mailto:' + C.NOTIFY_EMAIL +
+      '?subject=' + encodeURIComponent('Connected Coach application: ' + payload.from_name) +
+      '&body=' + encodeURIComponent(body);
+    return true;
+  }
+
+  function showDone(){
+    form.style.display = 'none';
+    done.style.display = 'block';
+    done.setAttribute('tabindex', '-1');
+    done.focus();
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var bad = validate();
+    if (bad.length) {
+      setStatus('Check the highlighted fields and go again.', 'err');
+      var first = document.getElementById(bad[0]);
+      if (first) first.focus();
+      return;
+    }
+
+    var payload = {
+      from_name:  val('name'),
+      from_email: val('email'),
+      role:       val('role'),
+      sport:      val('sport'),
+      stuck:      val('stuck'),
+      tried:      val('tried'),
+      to_email:   C.NOTIFY_EMAIL || ''
+    };
+
+    busy(true);
+    setStatus('');
+
+    // The list subscribe is best effort. It must never cost someone their seat.
+    subscribeToKit(payload).catch(function(err){ console.warn('Kit subscribe failed', err); });
+
+    sendViaEmailJS(payload).then(function(){
+      busy(false);
+      showDone();
+    }).catch(function(err){
+      busy(false);
+      console.warn('EmailJS send failed', err);
+      if (mailtoFallback(payload)) {
+        setStatus('Opening your mail app to finish sending. Hit send in there and you are done.', 'ok');
+        return;
+      }
+      setStatus('That did not go through. Mail me directly at ' + (C.NOTIFY_EMAIL || 'the address in the footer') + ' and I will pick it up.', 'err');
+    });
+  });
+
+  // Clear the error state as soon as someone starts fixing it.
+  ['name','email','role','stuck'].forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('input', function(){ mark(id, false); });
+  });
+})();
+</script>
+</body>
+</html>

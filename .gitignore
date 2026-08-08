@@ -1,0 +1,8 @@
+# This repo is PUBLIC. Only the page and its config belong here.
+#
+# Every .md in this folder is internal: SETUP.md carries private rates and
+# pricing strategy. Ignoring the whole extension rather than naming files,
+# because a filename-based rule is exactly what let a private page reach the
+# public site in the where-your-feet-are repo (found 8 Aug 2026).
+*.md
+.DS_Store
